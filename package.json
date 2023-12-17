@@ -1,0 +1,34 @@
+{
+  "type": "module",
+  "name": "project-koa2",
+  "version": "0.0.1",
+  "description": "koa2项目",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=develop nodemon --inspect ./index.js",
+    "start": "node ./index.js",
+    "createKey": "node ./utils/createKey.js"
+  },
+  "author": "feiYu",
+  "license": "ISC",
+  "dependencies": {
+    "assist-tools": "^0.2.1",
+    "chalk": "^5.3.0",
+    "ip": "^1.1.8",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "koa": "^2.14.2",
+    "koa-router": "^12.0.1",
+    "koa-static": "^5.0.0",
+    "log4js": "^6.9.1",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.0.1"
+  },
+  "volta": {
+    "node": "20.10.0"
+  }
+}
