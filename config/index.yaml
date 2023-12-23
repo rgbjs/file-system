@@ -30,6 +30,11 @@ project:
   # token
   # 空字符串将在每次重启服务时随机生成一个 Token , 生成环境推荐使用随机生成, 开发环境可以固定 Token 以便于调试 [推荐]
   token: ""
+  # 以下两个配置会作为默认参数, 在实际使用过程中也可以通过传递配置对象来覆盖此默认参数
+  # token有效时长, 单位秒
+  effectiveTime: 604800
+  # 验证 token 时是验证时间是否过期
+  verifyTime: true
 
 # 色彩配置
 # 色彩选配推荐: https://hao.uisdc.com/color/
