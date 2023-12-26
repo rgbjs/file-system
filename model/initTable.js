@@ -10,7 +10,7 @@ export default async ({ execute, query, pool }) => {
         remark text comment '备注',
         createTime varchar(50) comment '创建时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
-    )`
+    );`
     await execute(createAdminTableSql)
 
     const createUserTableSql = `create table if not exists user(
@@ -23,7 +23,7 @@ export default async ({ execute, query, pool }) => {
         state varchar(1) comment '状态',
         createTime varchar(50) comment '创建时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
-    )`
+    );`
     await execute(createUserTableSql)
 
     const createFileInfoTableSql = `create table if not exists fileInfo(
@@ -38,7 +38,7 @@ export default async ({ execute, query, pool }) => {
         state varchar(1) comment '状态',
         uploadTime varchar(50) comment '上传时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
-    )`
+    );`
     await execute(createFileInfoTableSql)
 
     const queryRootSql = `select * from admin where account = '${account}'`
@@ -46,7 +46,7 @@ export default async ({ execute, query, pool }) => {
     if (!root[0].length) {
         const createRootSql = `insert into 
         admin(name, account, password, headerImg, remark, createTime)
-        values('初始账号', '${account}', '${password}', '', '', '${Date.now()}')`
+        values('初始账号', '${account}', '${password}', '', '', '${Date.now()}');`
         await execute(createRootSql)
     }
 }
