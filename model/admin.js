@@ -1,9 +1,9 @@
-import { execute } from './db.js'
+import { execute, query } from './db.js'
 
 const queryAdminListSql = `select 
 id, name, account, headerImg, remark, createTime 
 from admin 
-where (name like concat('%', ?, '%') or account like concat('%', ?, '%')) and deleteTime is null order by id desc limit ?, ?;`
+where (name like concat('%', ?, '%') or account like concat('%', ?, '%')) and deleteTime is null order by id desc limit ?, ?`
 
 /**
  * 获取管理员列表
@@ -16,7 +16,7 @@ where (name like concat('%', ?, '%') or account like concat('%', ?, '%')) and de
  */
 export const queryAdminList = async ({ keyword, page, limit }) => {
     page = (page - 1) * limit
-    const result = await execute(queryAdminListSql, [keyword, keyword, page, limit])
+    const result = await execute(queryAdminListSql, [keyword, keyword, String(page), String(limit)])
     return result[0]
 }
 
@@ -47,7 +47,7 @@ where id = ?;`
  * @returns {object} 返回一个指定管理员, 如果不存在则返回 undefined
  */
 export const queryAdminById = async (id) => {
-    const result = await execute(queryAdminByIdSql, [id])
+    const result = await execute(queryAdminByIdSql, [String(id)])
     return result[0][0]
 }
 
@@ -108,10 +108,10 @@ const deleteAdminSql = `update admin set deleteTime = ? where id = ?`
 /**
  * 删除一个管理员
  * @param {object} options 参数对象
- * @param {string} options.id 管理员ID
+ * @param {string|number} options.id 管理员ID
  * @param {string} options.deleteTime 删除时间
  * @returns {void} 
  */
 export const deleteAdmin = async ({ deleteTime, id }) => {
-    await execute(deleteAdminSql, [deleteTime, id])
+    await execute(deleteAdminSql, [deleteTime, String(id)])
 }

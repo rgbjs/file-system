@@ -125,6 +125,13 @@ router.put('/admin', async (ctx) => {
 
     const { id } = ctx.request.body
     const adminInfo = await queryAdminById(id)
+    if (!adminInfo) {
+        ctx.body = {
+            code: 1,
+            msg: '管理员不存在'
+        }
+        return
+    }
     const {
         name = adminInfo.name,
         password = adminInfo.password,
@@ -146,6 +153,15 @@ router.delete('/admin/:id', async (ctx) => {
     const check = checkQueryId(id)
     if (check.code !== 0) {
         ctx.body = check
+        return
+    }
+
+    const adminInfo = await queryAdminById(id)
+    if (!adminInfo) {
+        ctx.body = {
+            code: 1,
+            msg: '管理员不存在'
+        }
         return
     }
 
