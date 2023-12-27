@@ -63,13 +63,8 @@ export const checkCreateAdmin = ({ name, account, password, headerImg, remark })
         checkRemark(remark)
     ]
 
-    const result = resultArr.find(resultItem => resultItem)
-    if (result) {
-        return {
-            code: 1,
-            msg: result
-        }
-    }
+    const result = resultArr.find(resultItem => resultItem.code !== 0)
+    if (result) return result
 
     return {
         code: 0
@@ -83,19 +78,14 @@ export const checkUpdateAdmin = ({ id, name, password, headerImg, remark }) => {
     }
 
     const resultArr = [
-        name === undefined ? null : checkName(name),
-        password === undefined ? null : checkPassword(password),
-        headerImg === undefined ? null : checkHeaderImg(headerImg),
-        remark === undefined ? null : checkRemark(remark)
+        name === undefined ? { code: 0 } : checkName(name),
+        password === undefined ? { code: 0 } : checkPassword(password),
+        headerImg === undefined ? { code: 0 } : checkHeaderImg(headerImg),
+        remark === undefined ? { code: 0 } : checkRemark(remark)
     ]
 
-    const result = resultArr.find(resultItem => resultItem !== undefined)
-    if (result) {
-        return {
-            code: 1,
-            msg: result
-        }
-    }
+    const result = resultArr.find(resultItem => resultItem.code !== 0)
+    if (result) return result
 
     return {
         code: 0
