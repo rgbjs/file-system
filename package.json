@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "project-koa2",
-  "version": "0.0.3",
-  "description": "koa2项目",
+  "name": "file-system",
+  "version": "0.0.4",
+  "description": "文件管理系统",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=develop nodemon --inspect ./index.js",
