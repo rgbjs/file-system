@@ -1,3 +1,5 @@
+import { encryp } from '../lib/encryp.js'
+
 // 初始化数据库表
 const { account, password } = globalThis.config.admin
 export default async ({ execute, query, pool }) => {
@@ -26,7 +28,7 @@ export default async ({ execute, query, pool }) => {
     );`
     await execute(createUserTableSql)
 
-    const createFileInfoTableSql = `create table if not exists fileInfo(
+    const createFileInfoTableSql = `create table if not exists file_info(
         id int primary key auto_increment,
         filename varchar(20) comment '文件名',
         realFilename varchar(300) comment '真实文件名',
@@ -44,9 +46,10 @@ export default async ({ execute, query, pool }) => {
     const queryRootSql = `select * from admin where account = '${account}'`
     const root = await execute(queryRootSql)
     if (!root[0].length) {
+        const encrypPassword = await encryp(password)
         const createRootSql = `insert into 
         admin(name, account, password, headerImg, remark, createTime)
-        values('初始账号', '${account}', '${password}', '', '', '${Date.now()}');`
+        values('初始账号', '${account}', '${encrypPassword}', '', '', '${Date.now()}');`
         await execute(createRootSql)
     }
 }

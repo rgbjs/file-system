@@ -1,5 +1,6 @@
 import Router from "koa-router"
 import xss from 'xss'
+import { encryp } from '../../lib/encryp.js'
 import {
     queryAdminList,
     queryAdminById,
@@ -100,10 +101,11 @@ router.post('/admin', async (ctx) => {
         return
     }
 
+    const encrypPassword = await encryp(password)
     await createAdmin({
         name,
         account,
-        password,
+        password: encrypPassword,
         headerImg,
         remark: xss(remark),
         createTime: String(Date.now())
