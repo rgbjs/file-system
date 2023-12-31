@@ -26,6 +26,8 @@ project:
 
   # 数据库字段加密秘钥, 例如加密密码, 控制台中运行命令 npm run createKey 将产生一个随机的 32 位字符
   encryptKey: "3nyu8tdt98pnlwos5lzqbi68zf3yxfjfcb6g"
+  # 加盐轮数
+  salt: 10
 
   # token
   # 空字符串将在每次重启服务时随机生成一个 Token , 生成环境推荐使用随机生成, 开发环境可以固定 Token 以便于调试 [推荐]
