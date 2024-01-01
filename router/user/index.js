@@ -128,13 +128,19 @@ router.post('/user', async (ctx) => {
 
 /** 修改一个用户 */
 router.put('/user', async (ctx) => {
-    const check = checkUpdateUser(ctx.request.body)
+    const { tokenInfo } = ctx.state
+    const info = { ...ctx.request.body }
+    if (tokenInfo.data.identity === 'user') {
+        info.id = tokenInfo.data.id
+    }
+    
+    const check = checkUpdateUser(info)
     if (check.code !== 0) {
         ctx.body = check
         return
     }
 
-    const { id } = ctx.request.body
+    const { id } = info
     const userInfo = await queryUserById(id)
     if (!userInfo) {
         ctx.body = {
