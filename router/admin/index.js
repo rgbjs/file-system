@@ -101,6 +101,15 @@ router.post('/admin', async (ctx) => {
         return
     }
 
+    const admin = await queryAdminByAccount(account)
+    if (admin) {
+        ctx.body = {
+            code: 1,
+            msg: '账号已存在, 请换个账号'
+        }
+        return
+    }
+
     const encrypPassword = await encryp(password)
     await createAdmin({
         name,
