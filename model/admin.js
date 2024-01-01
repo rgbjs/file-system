@@ -1,4 +1,4 @@
-import { execute, query } from './db.js'
+import { execute } from './db.js'
 
 const queryAdminListSql = `select 
 id, name, account, headerImg, remark, createTime 
@@ -39,7 +39,7 @@ export const queryCount = async (keyword) => {
 const queryAdminByIdSql = `select
 id, name, account, password, headerImg, remark, createTime
 from admin
-where id = ?;`
+where id = ? and deleteTime is null;`
 
 /**
  * 根据 id 查询一个管理员
@@ -55,7 +55,7 @@ export const queryAdminById = async (id) => {
 const queryAdminByAccountSql = `select
 id, name, account, password, headerImg, remark, createTime
 from admin
-where account = ?;`
+where account = ? and deleteTime is null;`
 
 /**
  * 根据 account 查询一个管理员
@@ -88,7 +88,7 @@ export const createAdmin = async ({ name, account, password, headerImg, createTi
 }
 
 
-const updateAdminSql = `update admin set name = ?, password = ?, headerImg = ?, remark = ? where id = ?`
+const updateAdminSql = `update admin set name = ?, password = ?, headerImg = ?, remark = ? where id = ? and deleteTime is null;`
 /**
  * 修改一个管理员
  * @param {object} options 参数对象
@@ -104,7 +104,7 @@ export const updateAdmin = async ({ name, password, headerImg, remark, id }) => 
 }
 
 
-const deleteAdminSql = `update admin set deleteTime = ? where id = ?`
+const deleteAdminSql = `update admin set deleteTime = ? where id = ? and deleteTime is null;`
 /**
  * 删除一个管理员
  * @param {object} options 参数对象
