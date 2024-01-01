@@ -66,3 +66,8 @@ mysql:
 admin:
   account: "root"
   password: "123456"
+
+# 文件储存路径
+file:
+  public: "/fileStore/public"
+  private: "/fileStore/private"
