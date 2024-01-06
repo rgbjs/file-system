@@ -9,6 +9,14 @@
     "start": "node ./index.js",
     "createKey": "node ./utils/createKey.js"
   },
+  "imports": {
+    "#root/*": "./*",
+    "#lib/*": "./lib/*",
+    "#src/*": "./src/*",
+    "#utils/*": "./utils/*",
+    "#model/*": "./model/*",
+    "#router/*": "./router/*"
+  },
   "author": "feiYu",
   "license": "ISC",
   "dependencies": {
