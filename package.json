@@ -24,6 +24,7 @@
     "assist-tools": "^0.2.1",
     "bcrypt": "^5.1.1",
     "chalk": "^5.3.0",
+    "formidable": "^3.5.1",
     "ip": "^1.1.8",
     "js-yaml": "^4.1.0",
     "jsonwebtoken": "^9.0.2",
