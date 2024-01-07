@@ -71,3 +71,4 @@ admin:
 file:
   public: "/fileStore/public"
   private: "/fileStore/private"
+  temp: "/fileStore/temp"
