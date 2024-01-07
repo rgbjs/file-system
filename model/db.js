@@ -31,7 +31,16 @@ pool.on('error', (err) => {
     console.log(err, '\n')
 })
 
+/**
+ * 不使用日志记录的方法
+ */
+export const notLog = {
+    query: pool.query.bind(pool),
+    execute: pool.execute.bind(pool)
+}
+
 export const query = async (...args) => {
+    sqlLog.info(args)
     try {
         return pool.query(...args)
     } catch (error) {
@@ -52,7 +61,9 @@ export const query = async (...args) => {
         }
     }
 }
+
 export const execute = async (...args) => {
+    sqlLog.info(args)
     try {
         return pool.execute(...args)
     } catch (error) {
@@ -75,6 +86,6 @@ export const execute = async (...args) => {
 }
 
 // 创建数据库
-await execute(`create database if not exists ${database} default character set utf8mb4 default collate utf8mb4_bin`)
-await query(`use ${database}`)
-await initTable({ execute, query, pool })
+await notLog.execute(`create database if not exists ${database} default character set utf8mb4 default collate utf8mb4_bin`)
+await notLog.query(`use ${database}`)
+await initTable({ notLog, execute, query, pool })

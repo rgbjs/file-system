@@ -2,7 +2,7 @@ import { encryp } from '../lib/encryp.js'
 
 // 初始化数据库表
 const { account, password } = globalThis.config.admin
-export default async ({ execute, query, pool }) => {
+export default async ({ notLog, execute, query, pool }) => {
     const createAdminTableSql = `create table if not exists admin(
         id int primary key auto_increment,
         name varchar(20) comment '名字',
@@ -13,7 +13,7 @@ export default async ({ execute, query, pool }) => {
         createTime varchar(50) comment '创建时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
     );`
-    await execute(createAdminTableSql)
+    await notLog.execute(createAdminTableSql)
 
     const createUserTableSql = `create table if not exists user(
         id int primary key auto_increment,
@@ -26,7 +26,7 @@ export default async ({ execute, query, pool }) => {
         createTime varchar(50) comment '创建时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
     );`
-    await execute(createUserTableSql)
+    await notLog.execute(createUserTableSql)
 
     const createFileInfoTableSql = `create table if not exists file_info(
         id int primary key auto_increment,
@@ -41,15 +41,15 @@ export default async ({ execute, query, pool }) => {
         uploadTime varchar(50) comment '上传时间, 时间戳',
         deleteTime varchar(50) comment '删除时间, 时间戳'
     );`
-    await execute(createFileInfoTableSql)
+    await notLog.execute(createFileInfoTableSql)
 
     const queryRootSql = `select * from admin where account = '${account}'`
-    const root = await execute(queryRootSql)
+    const root = await notLog.execute(queryRootSql)
     if (!root[0].length) {
         const encrypPassword = await encryp(password)
         const createRootSql = `insert into 
         admin(name, account, password, headerImg, remark, createTime)
         values('初始账号', '${account}', '${encrypPassword}', '', '', '${Date.now()}');`
-        await execute(createRootSql)
+        await notLog.execute(createRootSql)
     }
 }
