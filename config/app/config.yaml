@@ -71,4 +71,6 @@ admin:
 file:
   public: "/fileStore/public"
   private: "/fileStore/private"
+  recycleBin: "/fileStore/recycleBin"
   temp: "/fileStore/temp"
+  domain: "http://rgbjs.cn"
