@@ -175,11 +175,17 @@ log4js.configure({
     },
 })
 
+ /** 中断日志 崩溃 */
 export const stopErrorLog = log4js.getLogger('stopErrorLog')
+/** 错误日志 警告 */
 export const errorLog = log4js.getLogger('errorLog')
+/** 普通日志 分析 */
 export const currencyLog = log4js.getLogger('currencyLog')
+/** 请求日志 详情 */
 export const requestLog = log4js.getLogger('requestLog')
+/** 访问日志 统计 */
 export const accessLog = log4js.getLogger('accessLog')
+/** 输出日志 提醒(默认) */
 export const defaultLog = log4js.getLogger()
 
 // 未正常退出时将没记录完的日志继续记录完
