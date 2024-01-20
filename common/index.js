@@ -1,1 +1,2 @@
-export *  as logger from './logger/logger.js'
+export *  as logger from './logger/index.js'
+export *  as checkAuthority from './checkAuthority/index.js'
