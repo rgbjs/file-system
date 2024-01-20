@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import randomKey from './randomKey/index.js'
+import randomKey from '../randomKey/index.js'
 
 let { token: key, effectiveTime, verifyTime } = globalThis.config.project
 if (key === '') key = randomKey(32)
