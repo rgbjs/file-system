@@ -5,20 +5,29 @@
             "#root/*": [
                 "./*"
             ],
-            "#lib/*": [
-                "./lib/*"
+            "#config": [
+                "config/index.js"
             ],
-            "#src/*": [
+            "#middleware": [
+                "./middleware/index.js"
+            ],
+            "#lib": [
+                "./src/lib/index.js"
+            ],
+            "#utils": [
+                "./src/utils/index.js"
+            ],
+            "#model": [
+                "./src/model/index.js"
+            ],
+            "#router": [
+                "./src/router/index.js"
+            ],
+            "#common": [
+                "./common/index.js"
+            ],
+            "#@/*": [
                 "./src/*"
-            ],
-            "#utils/*": [
-                "./utils/*"
-            ],
-            "#model/*": [
-                "./model/*"
-            ],
-            "#router/*": [
-                "./router/*"
             ]
         }
     }
