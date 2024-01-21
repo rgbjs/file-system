@@ -12,9 +12,6 @@ project:
   # 前端资源目录 "/" 相对项目根路径
   dist: "/public/dist"
 
-  # 是否开启日志记录
-  isLog: true
-
   # 接口起始路径
   api: "/api"
 
@@ -55,7 +52,6 @@ color:
 
 # 数据库配置
 mysql:
-  start: true # 是否启用 mysql
   host: "localhost"
   port: 3306
   database: "file_system"
@@ -69,8 +65,8 @@ admin:
 
 # 文件储存路径
 file:
-  public: "/fileStore/public"
-  private: "/fileStore/private"
-  recycleBin: "/fileStore/recycleBin"
-  temp: "/fileStore/temp"
+  public: "/public/fileStore/public"
+  private: "/public/fileStore/private"
+  recycleBin: "/public/fileStore/recycleBin"
+  temp: "/public/fileStore/temp"
   domain: "http://rgbjs.cn"
