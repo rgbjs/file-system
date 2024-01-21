@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.0.0
     version: 5.0.0
   assist-tools:
-    specifier: ^0.2.1
-    version: 0.2.1
+    specifier: ^1.0.2
+    version: 1.0.2
   bcrypt:
     specifier: ^5.1.1
     version: 5.1.1
@@ -147,8 +147,8 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /assist-tools@0.2.1:
-    resolution: {integrity: sha512-CaSRcJq/l3KjNwtFDdnxaC/h4XYP6kM15nZgwzvGkLM9/hw6gP0Vws8RTluPQbDzW9tE1IXHh0Nwxqfks4R7tw==}
+  /assist-tools@1.0.2:
+    resolution: {integrity: sha512-K8r/1CV7HOXcE4LZjjj1sUdYHWEmXHSd9xD7vvOV627iB5OZTHxZAxMgf+M4YmbvmFrluR/yX4/56O892DDyXw==}
     dev: false
 
   /balanced-match@1.0.2:
