@@ -26,7 +26,7 @@ const tempStore = fileConfig.$temp
 const router = new Router()
 
 let domain
-if (process.env.NODE_ENV === 'develop') {
+if (process.env.NODE_ENV === 'development') {
     domain = `http://${ip}:${project.port}`
 } else {
     domain = fileConfig.domain

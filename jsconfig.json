@@ -6,7 +6,7 @@
                 "./*"
             ],
             "#config": [
-                "config/index.js"
+                "./config/index.js"
             ],
             "#middleware": [
                 "./middleware/index.js"

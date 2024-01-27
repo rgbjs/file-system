@@ -5,11 +5,13 @@
   "description": "文件管理系统",
   "main": "./main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=develop node ./dev/index.js",
-    "dev:debug": "cross-env NODE_ENV=develop node --inspect ./dev/index.js",
+    "dev": "cross-env NODE_ENV=development node ./dev/index.js",
+    "dev:debug": "cross-env NODE_ENV=development node --inspect ./dev/index.js",
     "start": "node ./main.js",
-    "start:debug": "cross-env NODE_ENV=develop node --inspect ./main.js",
-    "createKey": "node ./dev/createKey/index.js"
+    "start:debug": "cross-env NODE_ENV=development node --inspect ./main.js",
+    "createKey": "node ./dev/createKey/index.js",
+    "build": "webpack --mode=production",
+    "preview": "node ./dist/bundle.js"
   },
   "imports": {
     "#root/*": "./*",
@@ -48,6 +50,6 @@
     "webpack-cli": "^5.1.4"
   },
   "volta": {
-    "node": "20.10.0"
+    "node": "18.19.0"
   }
 }
